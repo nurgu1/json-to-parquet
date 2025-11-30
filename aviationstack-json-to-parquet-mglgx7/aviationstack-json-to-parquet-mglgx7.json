@@ -1,0 +1,41 @@
+{
+  "name" : "aviationstack-json-to-parquet-mglgx7",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::937385940368:role/LabRole",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-937385940368-us-east-1/scripts/aviationstack-json-to-parquet-mglgx7.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-937385940368-us-east-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--TARGET_PATH" : "s3://aviation-flights-converted-mglgx7/",
+    "--enable-observability-metrics" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--RAW_PATH" : "s3://aviation-flights-raw-mglgx7/year=*/month=*/day=*/hour=*/flights.json",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-937385940368-us-east-1/temporary/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 480,
+  "maxCapacity" : 10.0,
+  "glueVersion" : "5.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "json-to-parquet",
+    "branch" : "main",
+    "folder" : "aviationstack-json-to-parquet-mglgx7"
+  }
+}
